@@ -27,12 +27,14 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.POST, "/users").permitAll()
 
+                        .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
+
                         //tranca todo o resto
                         .anyRequest().authenticated()
                 )
                 .build();
     }
-    // ✅ A MÁGICA NOVA AQUI: Ensinando o Spring a criar o triturador BCrypt
+    // Ensinando o Spring a criar o triturador BCrypt
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
