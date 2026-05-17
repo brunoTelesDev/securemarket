@@ -29,6 +29,10 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
 
+                        .requestMatchers(HttpMethod.PUT, "/users/**").permitAll()
+
+                        .requestMatchers(HttpMethod.DELETE, "/users/**").permitAll()
+
                         //tranca todo o resto
                         .anyRequest().authenticated()
                 )

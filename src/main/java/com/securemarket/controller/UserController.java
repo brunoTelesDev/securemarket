@@ -117,4 +117,50 @@ public class UserController {
         // 3. Devolvemos a lista limpa
         return ResponseEntity.ok(usuariosLimpos);
     }
+    // ==========================================
+    // ROTA DE ATUALIZAR USUÁRIO (PUT)
+    // ==========================================
+    @PutMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserRequestDTO requestDTO) {
+
+        // 1. O garçom vai no banco verificar se esse cara realmente existe
+        User usuarioDoBanco = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
+
+        // 2.  sujei a entidade com os dados novos que vieram do Postman
+        usuarioDoBanco.setName(requestDTO.name());
+        usuarioDoBanco.setEmail(requestDTO.email());
+        usuarioDoBanco.setRole(requestDTO.role());
+        //3 como o usuário já tem um ID, o ".save()" faz um UPDATE em vez de um INSERT!
+        User usuarioAtualizado = userRepository.save(usuarioDoBanco);
+
+        // 4. Empratar a resposta segura
+        UserResponseDTO resposta = new UserResponseDTO(
+                usuarioAtualizado.getId(),
+                usuarioAtualizado.getName(),
+                usuarioAtualizado.getEmail(),
+                usuarioAtualizado.getRole().name()
+        );
+
+        // 5. Devolver para o cliente
+        return ResponseEntity.ok(resposta);
+    }
+
+    // ==========================================
+    // ROTA DE DELETAR USUÁRIO (DELETE)
+    // ==========================================
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
+
+        // 1. Verificar se o usuário existe antes de tentar deletar
+        if (!userRepository.existsById(id)) {
+            throw new RuntimeException("Usuário não encontrado!");
+        }
+
+        // 2. A guilhotina do banco de dados (Deleta de verdade)
+        userRepository.deleteById(id);
+
+        // 3. Devolver o Status 204 (No Content)
+        return ResponseEntity.noContent().build();
+    }
 }
