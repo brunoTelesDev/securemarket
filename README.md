@@ -46,4 +46,4 @@ Você **não precisa** ter o Java nem o PostgreSQL instalados fisicamente na sua
 ### Passo a Passo
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/SEU_USUARIO/securemarket.git](https://github.com/brunoTelesDev/securemarket.git)
+   git clone [https://github.com/brunoTelesDev/securemarket.git]
