@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/securemarket_db
-    username: admin
-    password: adminpassword
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/securemarket_db}
+    username: ${SPRING_DATASOURCE_USERNAME:admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:adminpassword}
     driver-class-name: org.postgresql.Driver
 
   jpa:
