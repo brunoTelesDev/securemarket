@@ -43,7 +43,8 @@ A API foi modelada com base no seguinte design de banco de dados (ERD):
 
 Você **não precisa** ter o Java nem o PostgreSQL instalados fisicamente na sua máquina. Basta ter o **Docker** e o **Docker Compose** configurados.
 
-### Passo a Passo
+
+   ### Passo a Passo
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/brunoTelesDev/securemarket.git]
+   git clone [https://github.com/brunoTelesDev/securemarket.git](https://github.com/brunoTelesDev/securemarket.git)
