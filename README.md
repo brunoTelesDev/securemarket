@@ -9,6 +9,8 @@ O projeto foi totalmente estruturado seguindo os padrões de mercado com a arqui
 ## 🏗️ Arquitetura do Banco de Dados (Mapeamento Relacional)
 
 A API foi modelada com base no seguinte design de banco de dados (ERD):
+<img width="1001" height="700" alt="Untitled" src="https://github.com/user-attachments/assets/fa319fd5-b723-4aaf-8dca-38f453f507fa" />
+
 
 * **Users ➡️ Sellers (`@OneToOne`):** Um usuário pode possuir no máximo uma única loja (perfil vendedor).
 * **Sellers ➡️ Products (`@OneToMany`):** Uma loja pode ter vários produtos cadastrados, mas cada produto pertence a uma única loja.
